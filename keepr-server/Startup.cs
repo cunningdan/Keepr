@@ -15,6 +15,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using MySqlConnector;
+using keepr_server.Services;
+using keepr_server.Repositories;
 
 namespace keepr_server
 {
@@ -62,6 +64,16 @@ namespace keepr_server
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "keepr-server", Version = "v1" });
             });
+            services.AddScoped<IDbConnection>(x => CreateDbConnection());
+            services.AddTransient<ProfileService>();
+            services.AddTransient<ProfileRepository>();
+            services.AddTransient<KeepService>();
+            services.AddTransient<KeepRepository>();
+            services.AddTransient<VaultService>();
+            services.AddTransient<VaultRepository>();
+            services.AddTransient<VaultKeepService>();
+            services.AddTransient<VaultKeepRepository>();
+
 
             // REVIEW Do you want to do something here?
 

@@ -38,7 +38,7 @@ namespace keepr_server.Controllers
         }
         [HttpGet("{creatorId}/vaults")]
         [Authorize]
-        public ActionResult<IEnumerable<Vault>> GetByProfile(string creatorId)
+        public ActionResult<IEnumerable<Vault>> GetVaultByProfile(string creatorId)
         {
             try
             {
@@ -51,7 +51,7 @@ namespace keepr_server.Controllers
         }
         [HttpGet("{creatorId}/keeps")]
         [Authorize]
-        public ActionResult<IEnumerable<Keep>> GetByProfile(string creatorId)
+        public ActionResult<IEnumerable<Keep>> GetKeepByProfile(string creatorId)
         {
             try
             {

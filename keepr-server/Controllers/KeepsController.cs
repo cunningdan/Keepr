@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
-using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using keepr_server.Services;
 using keepr_server.Models;
@@ -8,11 +7,16 @@ using keepr_server.Models;
 namespace keepr_server.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class KeepsController : ControllerBase
     {
+        private readonly KeepService _ks;
+        public KeepsController(KeepService ks)
+        {
+            _ks = ks;
+        }
         [HttpGet]
-        public Keep GetAll()
+        public ActionResult<IEnumerable<Keep>> GetAll()
         {
             try
             {
