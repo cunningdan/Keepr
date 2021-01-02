@@ -16,7 +16,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using MySqlConnector;
 
-namespace amazen-server
+namespace keepr_server
 {
     public class Startup
     {

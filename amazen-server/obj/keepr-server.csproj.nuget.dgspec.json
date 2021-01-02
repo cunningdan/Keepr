@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\source\\codeworks\\amazen\\amazen-server\\amazen-server.csproj": {}
+    "c:\\source\\codeworks\\keepr\\keepr-server\\keepr-server.csproj": {}
   },
   "projects": {
-    "c:\\source\\codeworks\\amazen\\amazen-server\\amazen-server.csproj": {
+    "c:\\source\\codeworks\\keepr\\keepr-server\\keepr-server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\source\\codeworks\\amazen\\amazen-server\\amazen-server.csproj",
-        "projectName": "amazen-server",
-        "projectPath": "c:\\source\\codeworks\\amazen\\amazen-server\\amazen-server.csproj",
+        "projectUniqueName": "c:\\source\\codeworks\\keepr\\keepr-server\\keepr-server.csproj",
+        "projectName": "keepr-server",
+        "projectPath": "c:\\source\\codeworks\\keepr\\keepr-server\\keepr-server.csproj",
         "packagesPath": "C:\\Users\\darry\\.nuget\\packages\\",
-        "outputPath": "c:\\source\\codeworks\\amazen\\amazen-server\\obj\\",
+        "outputPath": "c:\\source\\codeworks\\keepr\\keepr-server\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "amazen_server": {
+    "keepr_server": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,
