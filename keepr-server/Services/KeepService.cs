@@ -19,5 +19,10 @@ namespace keepr_server.Services
         {
             return _repo.GetByProfile(creatorId);
         }
+        public Keep Create(Keep newKeep)
+        {
+            newKeep.Id = _repo.Create(newKeep);
+            return newKeep;
+        }
     }
 }

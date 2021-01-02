@@ -39,3 +39,5 @@ C:\source\codeworks\CSharp\Keepr\keepr-server\obj\Debug\net5.0\keepr-server.dll
 C:\source\codeworks\CSharp\Keepr\keepr-server\obj\Debug\net5.0\ref\keepr-server.dll
 C:\source\codeworks\CSharp\Keepr\keepr-server\obj\Debug\net5.0\keepr-server.pdb
 C:\source\codeworks\CSharp\Keepr\keepr-server\obj\Debug\net5.0\keepr-server.genruntimeconfig.cache
+C:\source\codeworks\CSharp\Keepr\keepr-server\bin\Debug\net5.0\wwwsrc\package-lock.json
+C:\source\codeworks\CSharp\Keepr\keepr-server\bin\Debug\net5.0\wwwsrc\package.json

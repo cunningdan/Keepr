@@ -15,7 +15,7 @@ namespace keepr_server.Repositories
         }
         public IEnumerable<Keep> GetAll()
         {
-            string sql = "SELECT * FROM keeps WHERE isPrivate = 0";
+            string sql = "SELECT * FROM keeps";
             return _db.Query<Keep>(sql);
         }
         public IEnumerable<Keep> GetByProfile(string creatorId)
@@ -28,6 +28,16 @@ namespace keepr_server.Repositories
             JOIN profiles p ON keep.creatorId = p.id
             WHERE keep.creatorId = @creatorId;";
             return _db.Query<Keep, Profile, Keep>(sql, (keep, profile) => { keep.Creator = profile; return keep; }, new { creatorId }, splitOn: "id");
+        }
+        public int Create(Keep newKeep)
+        {
+            string sql = @"
+            INSERT INTO keeps
+            (name, description, img, creatorId)
+            VALUES
+            (@Name, @Description, @Img, @CreatorId);
+            SELECT LAST_INSERT_ID();";
+            return _db.ExecuteScalar<int>(sql, newKeep);
         }
     }
 }
