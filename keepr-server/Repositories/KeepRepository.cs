@@ -39,5 +39,32 @@ namespace keepr_server.Repositories
             SELECT LAST_INSERT_ID();";
             return _db.ExecuteScalar<int>(sql, newKeep);
         }
+        public Keep GetOne(int id)
+        {
+            string sql = @"
+            SELECT * FROM keeps WHERE id = @Id;";
+            return _db.QueryFirstOrDefault<Keep>(sql, new {id});
+        }
+        public bool Delete(int id)
+        {
+            string sql = "DELETE from keeps WHERE id = @Id";
+            int valid = _db.Execute(sql, new {id});
+            return valid > 0;
+        }
+        public void Edit(Keep keepData)
+        {
+            string sql = @"
+            UPDATE keeps
+            SET
+            description = @Description,
+            name = @Name,
+            isPrivate = @IsPrivate
+            img = @Img
+            views = @Views
+            keeps = @Keeps
+            shares = @Shares
+            WHERE id = @Id;";
+            _db.Execute(sql, keepData);
+        }
     }
 }

@@ -28,7 +28,6 @@ namespace keepr_server.Controllers
             catch (System.Exception e)
             {
                 return BadRequest(e.Message);
-                throw;
             }
         }
         [HttpPost]
@@ -42,6 +41,32 @@ namespace keepr_server.Controllers
                 Keep created = _ks.Create(newKeep);
                 created.Creator = userInfo;
                 return created;
+            }
+            catch (System.Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+        [HttpGet("{id}")]
+        public ActionResult<Keep> GetOne(int id)
+        {
+            try
+            {
+                return Ok(_ks.GetOne(id));
+            }
+            catch (System.Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+        [Authorize]
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<string>> Delete(int id)
+        {
+            try
+            {
+                Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
+                return Ok(_ks.Delete(id, userInfo.Id));
             }
             catch (System.Exception e)
             {
