@@ -1,19 +1,34 @@
 <template>
-  <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-    <img src="https://bcw.blob.core.windows.net/public/img/8600856373152463" alt="CodeWorks Logo">
-    <h1 class="my-5 bg-dark text-light p-3 rounded d-flex align-items-center">
-      <span class="mx-2 text-white">Vue 3 Starter</span>
-    </h1>
+  <div class="home container-fluid">
+    <div class="card-columns mt-3 m-2 text-nowrap">
+      <keep-component v-for="keep in keeps" :key="keep" :keep-prop="keep" />
+    </div>
   </div>
 </template>
 
 <script>
+import { computed, onMounted } from 'vue'
+import { AppState } from '../AppState'
+import { keepService } from '../services/KeepService'
+import KeepComponent from '../components/KeepComponent'
+
 export default {
-  name: 'Home'
+  name: 'Home',
+  setup() {
+    onMounted(() => {
+      keepService.GetAll()
+    })
+    return {
+      keeps: computed(() => AppState.keeps)
+    }
+  },
+  components: { KeepComponent }
 }
 </script>
 
 <style scoped lang="scss">
+.grid-item { width: 200px; }
+.grid-item--width2 { width: 400px; }
 .home{
   text-align: center;
   user-select: none;
@@ -22,4 +37,15 @@ export default {
     width: 200px;
   }
 }
+.card-columns { columns: 4;}
+
+  // @include media-breakpoint-only(lg) {
+  //   column-count: 4;
+  // }
+  // @include media-breakpoint-only(xl) {
+  //   column-count: 5;
+  // }
+  // @include media-breakpoint-only(xs) {
+  //   column-count: 2;
+  // }
 </style>

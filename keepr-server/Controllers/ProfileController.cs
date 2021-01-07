@@ -16,11 +16,13 @@ namespace keepr_server.Controllers
         private readonly ProfileService _ps;
         private readonly VaultService _vs;
         private readonly KeepService _ks;
-        public ProfileController(ProfileService ps, VaultService vs, KeepService ks)
+        private readonly VaultKeepService _vks;
+        public ProfileController(ProfileService ps, VaultService vs, KeepService ks, VaultKeepService vks)
         {
             _ks = ks;
             _vs = vs;
             _ps = ps;
+            _vks = vks;
         }
         [HttpGet]
         [Authorize]
@@ -62,5 +64,18 @@ namespace keepr_server.Controllers
                 return BadRequest(e.Message);
             }
         }
+        // [HttpGet("{creatorId}/vaultkeeps")]
+        // [Authorize]
+        // public ActionResult<IEnumerable<VaultKeep>> GetVaultKeepsByProfile(string creatorId)
+        // {
+        //     try
+        //     {
+        //         return Ok(_vks.GetByProfile(creatorId));
+        //     }
+        //     catch (System.Exception e)
+        //     {
+        //         return BadRequest(e.Message);
+        //     }
+        // }
     }
 }

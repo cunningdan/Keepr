@@ -15,8 +15,13 @@ namespace keepr_server.Repositories
         }
         public IEnumerable<Keep> GetAll()
         {
-            string sql = "SELECT * FROM keeps";
-            return _db.Query<Keep>(sql);
+            string sql = @"
+            SELECT 
+            keep.*,
+            p.*
+             FROM keeps keep
+             JOIN profiles p ON keep.creatorId = p.id;";
+            return _db.Query<Keep, Profile, Keep>(sql, (keep, profile) => { keep.Creator = profile; return keep; }, splitOn: "id");
         }
         public IEnumerable<Keep> GetByProfile(string creatorId)
         {
@@ -43,12 +48,12 @@ namespace keepr_server.Repositories
         {
             string sql = @"
             SELECT * FROM keeps WHERE id = @Id;";
-            return _db.QueryFirstOrDefault<Keep>(sql, new {id});
+            return _db.QueryFirstOrDefault<Keep>(sql, new { id });
         }
         public bool Delete(int id)
         {
             string sql = "DELETE from keeps WHERE id = @Id";
-            int valid = _db.Execute(sql, new {id});
+            int valid = _db.Execute(sql, new { id });
             return valid > 0;
         }
         public void Edit(Keep keepData)
@@ -58,10 +63,9 @@ namespace keepr_server.Repositories
             SET
             description = @Description,
             name = @Name,
-            isPrivate = @IsPrivate
-            img = @Img
-            views = @Views
-            keeps = @Keeps
+            img = @Img,
+            views = @Views,
+            keeps = @Keeps,
             shares = @Shares
             WHERE id = @Id;";
             _db.Execute(sql, keepData);

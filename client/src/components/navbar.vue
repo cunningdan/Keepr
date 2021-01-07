@@ -4,8 +4,8 @@
       <div class="d-flex flex-column align-items-center">
         <img
           alt="logo"
-          src="../assets/img/cw-logo.png"
-          height="45"
+          src="https://previews.123rf.com/images/rondale/rondale1701/rondale170100563/69948561-fire-letter-k-of-burning-blue-flame-flaming-burn-font-or-bonfire-alphabet-text-with-sizzling-smoke-a.jpg"
+          height="65"
         />
       </div>
     </router-link>
@@ -34,6 +34,10 @@
         </li>
       </ul>
       <span class="navbar-text">
+        <form @submit.prevent="SearchProfiles">
+          <input type="text" v-model="state.query.name" placeholder="Search Users">
+          <button type="submit">Search</button>
+        </form>
         <button
           class="btn btn-outline-primary text-uppercase"
           @click="login"
@@ -82,11 +86,13 @@
 import { AuthService } from '../services/AuthService'
 import { AppState } from '../AppState'
 import { computed, reactive } from 'vue'
+import { profileService } from '../services/ProfileService'
 export default {
   name: 'Navbar',
   setup() {
     const state = reactive({
-      dropOpen: false
+      dropOpen: false,
+      query: {}
     })
     return {
       state,
@@ -96,6 +102,10 @@ export default {
       },
       async logout() {
         await AuthService.logout({ returnTo: window.location.origin })
+      },
+      SearchProfiles() {
+        profileService.getByName(state.query.name)
+        state.query = {}
       }
     }
   }

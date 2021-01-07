@@ -26,7 +26,10 @@ namespace keepr_server.Services
         }
         public Keep GetOne(int id)
         {
-            return _repo.GetOne(id);
+            Keep foundKeep = _repo.GetOne(id);
+            foundKeep.Views++;
+            this.EditVSK(foundKeep);
+            return foundKeep;
         }
         public string Delete(int id, string userId)
         {
@@ -44,6 +47,18 @@ namespace keepr_server.Services
                 return "Deleted successfully";
             }
             return "Not Deleted";
+        }
+        public void Edit(Keep keepData, string userId)
+        {
+            if (userId != keepData.CreatorId)
+            {
+                throw new System.Exception("Access Denied");
+            }
+            _repo.Edit(keepData);
+        }
+        public void EditVSK(Keep keepData)
+        {
+            _repo.Edit(keepData);
         }
     }
 }

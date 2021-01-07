@@ -52,6 +52,7 @@ namespace keepr_server.Controllers
         {
             try
             {
+                // Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
                 return Ok(_ks.GetOne(id));
             }
             catch (System.Exception e)
@@ -67,6 +68,21 @@ namespace keepr_server.Controllers
             {
                 Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
                 return Ok(_ks.Delete(id, userInfo.Id));
+            }
+            catch (System.Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+        [Authorize]
+        [HttpPut("{id}")]
+        public async Task<ActionResult<string>> Edit([FromBody] Keep keepData)
+        {
+            try
+            {
+                Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
+                _ks.Edit(keepData, userInfo.Id);
+                return "Editing complete";
             }
             catch (System.Exception e)
             {

@@ -958,19 +958,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Dan\\.nuget\\packages\\": {}
+    "C:\\Users\\Cunni\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Dan\\codeworks\\csharp\\Keepr\\keepr-server\\keepr-server.csproj",
+      "projectUniqueName": "C:\\source\\codeworks\\CSharp\\Keepr\\keepr-server\\keepr-server.csproj",
       "projectName": "keepr-server",
-      "projectPath": "C:\\Users\\Dan\\codeworks\\csharp\\Keepr\\keepr-server\\keepr-server.csproj",
-      "packagesPath": "C:\\Users\\Dan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Dan\\codeworks\\csharp\\Keepr\\keepr-server\\obj\\",
+      "projectPath": "C:\\source\\codeworks\\CSharp\\Keepr\\keepr-server\\keepr-server.csproj",
+      "packagesPath": "C:\\Users\\Cunni\\.nuget\\packages\\",
+      "outputPath": "C:\\source\\codeworks\\CSharp\\Keepr\\keepr-server\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Dan\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Cunni\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -1043,7 +1043,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

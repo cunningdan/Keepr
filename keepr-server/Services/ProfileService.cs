@@ -10,6 +10,10 @@ namespace keepr_server.Services
         {
             _repo = repo;
         }
+        public Profile GetByName(string Name)
+        {
+            return _repo.GetByName(Name);
+        }
         public Profile GetOrCreateProfile(Profile userInfo)
         {
             Profile foundProfile = _repo.GetByEmail(userInfo.Email);
